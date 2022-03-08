@@ -1,17 +1,17 @@
 var mouseEvent = "empty";
 var last_position_of_x, last_position_of_y;
-
-
+color = "black";
+width_of_line = 2;
     canvas = document.getElementById('myCanvas');
     ctx = canvas.getContext("2d");
     
-    color = "black";
+   
     var width = screen.width;
 
     new_width = screen.width - 70;
     new_height = screen.height - 300;
 
-    width_of_line = 2;
+
     if(width < 992)
     {
         document.getElementById("myCanvas").width = new_width;
@@ -25,7 +25,7 @@ var last_position_of_x, last_position_of_y;
 
         color = document.getElementById("color").value;
         width_of_line = document.getElementById("width_of_line").value;
-        mouseEvent = "touchstart";
+        console.log("touchstart"); 
         last_position_of_x = e.touches[0].clientX - canvas.offsetLeft;
         last_position_of_y = e.touches[0].clientY - canvas.offsetTop;
 
@@ -43,7 +43,7 @@ var last_position_of_x, last_position_of_y;
         ctx.beginPath();
         ctx.strokeStyle = color;
         ctx.lineWidth = width_of_line;
-        ctx.arc(current_position_of_touch_x, current_position_of_touch_y, radius ,0 , 2 * Math.PI);
+        ctx.lineTo(current_position_of_touch_x, current_position_of_touch_y);
         ctx.stroke();
         last_position_of_x = current_position_of_touch_x;
         last_position_of_y = current_position_of_touch_y;
